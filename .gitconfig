@@ -1,0 +1,12 @@
+#
+# This is the config file, and
+# a '#' or ';' character indicates
+# a comment
+#
+[user]
+	name = Håkan Sundström
+	username = _hakke
+[alias]
+        po = push origin HEAD
+	ac = !git add . && git commit
+	rm-all-branches = !git branch | grep -v \"develop\" | grep -v \"master\" | xargs git branch -D
