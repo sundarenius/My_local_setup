@@ -1,12 +1,22 @@
-#
-# This is the config file, and
-# a '#' or ';' character indicates
-# a comment
-#
+# Place this file on $HOME folder
+
 [user]
-	name = Håkan Sundström
-	username = _hakke
+    name = Håkan Sundström
+    email = hakan.sundstrom@hm.com # this should be updated depending on context/computer
+
 [alias]
-        po = push origin HEAD
-	ac = !git add . && git commit
-	rm-all-branches = !git branch | grep -v \"develop\" | grep -v \"master\" | xargs git branch -D
+    po = push origin HEAD
+
+    ac = !git add . && git commit
+
+    rm-all-branches = !git branch | grep -v \"develop\" | grep -v \"master\" | xargs git branch -D
+
+    force-push = "!f() { \
+      branch=$(git rev-parse --abbrev-ref HEAD); \
+      read -p \"Are you sure you want to force push to $branch? (y/n) \" answer; \
+      if [ \"$answer\" != \"y\" ]; then echo \"Aborted.\"; exit 1; fi; \
+      git push -f origin $branch; \
+    }; f"
+
+[pull]
+	rebase = true
